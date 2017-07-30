@@ -9,9 +9,7 @@ echo "-- Make sure you do login first: "
 echo "   docker login"
 echo
 
-comment=${1:-Update JVM}
-imageTag=${2:-openkbs/scikit}
-imageVersion=1.0.1
+imageTag=${2:-openkbs/scikit-docker}
 
 docker ps -a
 
@@ -21,5 +19,3 @@ echo "containerID=$containerID"
 docker commit -m "$comment" ${containerID} ${imageTag}:latest
 docker push ${imageTag}:latest
 
-docker commit -m "$comment" ${containerID} ${imageTag}:${imageVersion}
-docker push ${imageTag}:${imageVersion}

@@ -39,8 +39,8 @@ mkdir -p ${local_docker_data1}
 mkdir -p ${local_docker_data2}
 
 #### ---- ports mapping ----
-docker_port1=
-local_docker_port1=
+docker_port1=8888
+local_docker_port1=18888
 
 ##################################################
 #### ---- Mostly, you don't need change below ----
@@ -60,6 +60,7 @@ echo "---------------------------------------------"
 
 docker run -d --rm \
     --name=${instanceName} \
+    -p ${local_docker_port1}:${docker_port1} \
     -v ${local_docker_data1}:${docker_volume_data1} \
     -v ${local_docker_data2}:${docker_volume_data2} \
     ${imageTag} 
