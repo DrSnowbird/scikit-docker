@@ -11,8 +11,8 @@
 ```bash
 docker pull openkbs/scikit
 ```
-## Login password (from jupyter screen)
-Token authentication is enabled. You need to open the notebook server with its first-time login token in the URL, or enable a password in order to gain access. The command:
+## Login password/token (from jupyter screen)
+Token authentication is enabled. You need to open the notebook server with its first-time login token in the URL, or enable a password in order to gain access. After you get in the container, the command to show token is 
 ```
 jupyter notebook list
 ```
@@ -25,6 +25,12 @@ Or you can paste just the token value into the password field on this page.
 
 Cookies are required for authenticated access to notebooks.
 
+## Or, just show the docker log to see the token
+```
+docker ps -a |grep scikit (to see the container id)
+then,
+docker logs <container_id>
+```
 
 ## Connect to scikit Docker
 host/port=> 0.0.0.0:18888 
@@ -57,7 +63,7 @@ To run your own image, say, with some-scikit:
 
 ```bash
 mkdir ./data
-docker run -d --name some-scikit -p 18888:88882 my/scikit
+docker run -d --name some-scikit -p 18888:8888 my/scikit
 ```
 
 ## Shell into the Docker instance
